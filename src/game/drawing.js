@@ -46,6 +46,7 @@ class Queue {
 }
 
 function GameDraw(turtle) {
+    let i;
     let t = turtle;
     let self = this;
 
@@ -229,7 +230,7 @@ function GameDraw(turtle) {
     }
 
     // ----------------------------
-    const canvas = document.getElementById("canvas");
+    const canvas = document.getElementById('space');
     const context = canvas.getContext("2d");
 
     const cursor = {
@@ -258,7 +259,7 @@ function GameDraw(turtle) {
             paused = false;
             snake.alive = true;
             snake.size = 10;
-            particle.forEach(p => p.food = true);
+            food.forEach(p => p.food = true);
         }
     });
 
@@ -276,7 +277,7 @@ function GameDraw(turtle) {
 
     function collisionTestIt() {
         collisionTest(snake, [shapeCirc]);
-        collisionTest(snake, particle);
+        collisionTest(snake, food);
     }
 
     // --------------------
@@ -286,17 +287,32 @@ function GameDraw(turtle) {
         shape.draw(shape);
     }
 
-    let particle = [];
-    for (var i = 0; i < 4; i++) {
+    //-- Define Food particles
+    let food = [];
+    for (i = 0; i < 4; i++) {
 
-        particle[i] = new Particle(
+        food[i] = new Particle(
             t,
             5,
             "Aquamarine"
         );
-        particle[i].moveBy(100, i * 90);
-        particle[i].food = true;
+        food[i].moveBy(100, i * 90);
+        food[i].food = true;
     }
+
+    //-- Define other particles
+    let dust = [];
+    for (i = 0; i < 8; i++) {
+
+        dust[i] = new Particle(
+            t,
+            3,
+            "Azure"
+        );
+        dust[i].moveBy(30, i * 45);
+        dust[i].food = false;
+    }
+
 
     function redrawAll() {
         if (paused) return;
@@ -309,15 +325,20 @@ function GameDraw(turtle) {
 
         //----
 
-        for (const element of particle) {
+        for (const element of food) {
             if (element.food) {
                 element.moveBy(getRandomInt(2), getRandomInt(5) - 2.5);
                 element.draw();
             }
         }
 
+        for (const element of dust) {
+            element.moveBy(getRandomInt(2), getRandomInt(10) - 5 + i % 3 - 1);
+            element.draw();
+        }
+
         //----
-//        redraw(particle, (shape) => {
+//        redraw(food, (shape) => {
 //            console.log(".");
 //            shape.myt.forward(3);
 //            if (getRandomInt(20) > 17) shape.myt.right(30);
