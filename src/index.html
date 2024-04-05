@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Tiny Game</title>
+    <script src="./game/tiny-turtle.js"></script>
+    <script src="./game/drawing.js"></script>
+    <link rel="stylesheet" href="./css/snake-style.css">
+</head>
+<body>
+<h1>Hello, Snake!</h1>
+<p>You are the Snake - a spaceship exploring the deep space.
+    You are located near (but not too near) a giant black hole.
+</p>
+<p>
+    Your mission is to collect tiny asteroids rich on proteinium - the rarest material in the galaxy and beyond.
+</p>
+<p>
+    Beware of the fast rotating neutron star, that is captured by the black hole, in a vicious cycle.
+    It's gravity is strong enough to splash you in pieces!
+</p>
+Let's Play!
+<ul>
+    <li>Guide the Snake with your mouse</li>
+    <li>Collect all the asteroids in blue - green color</li>
+    <li>You can pause the game with 'p'</li>
+    <li>If you're hit by the giant ball it's game over. Don't worry, try again with 'n'</li>
+</ul>
+<div>
+    <canvas id="space" width="300" height="300"></canvas>
+    <script>
+        GameDraw(new TinyTurtle()).start();
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+body {
+    background-color: lightblue;
+    font-family: Times, serif;
+}
+
+h1 {
+    color: navy;
+    margin-left: 20px;
+}
+
+li {
+    color: teal;
+    margin-left: 40px;
+}
+
+a {
+    color: yellow;
+}
