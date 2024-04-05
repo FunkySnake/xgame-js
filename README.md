@@ -3,9 +3,12 @@
 A simple game to play with graphics in vanilla JS using canvas. It extends the idea of a simple "turtle" moving around the board
 and drawing with "a pen". Adds some gameplay dynamics, event listeners, effects and collision detection.
 
-## Preview
+## Preview:
 
-![Snake game demo](./snake-demo.png)
+![Snake game demo](./snake-demo.png
+
+## Installation:
+Just clone this repository locally and open the index.html file in your favorite browser. Enjoy! :)
 
 ## Credits:
 
