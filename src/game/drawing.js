@@ -70,8 +70,8 @@ function GameDraw(turtle) {
         }
     };
 
-    var shapeCirc = function () {
-        var self = {};
+    let shapeCirc = function () {
+        let self = {};
         self.turt = new TinyTurtle();
         self.turt.right(180).forward(120).right(90);
         self.turt.penStyle = "salmon";
@@ -113,7 +113,7 @@ function GameDraw(turtle) {
         return deg;
     }
 
-    var snake = {
+    let snake = {
         myTurtle: new TinyTurtle(),
         tail: new Queue(),
         color: 'WhiteSmoke',
@@ -131,7 +131,7 @@ function GameDraw(turtle) {
         change: function (self) {
             if (!self.alive) return;
 
-            var deg = calculateTurn(self.myTurtle.position, cursor);
+            let deg = calculateTurn(self.myTurtle.position, cursor);
             self.myTurtle.left(deg - self.myTurtle.rotation);
             self.myTurtle.forward(1);
 
@@ -142,14 +142,13 @@ function GameDraw(turtle) {
 
         init: function (self) {
 
-            for (var i = 0; i < 20; i++) {
+            for (let i = 0; i < 20; i++) {
                 self.tail.enqueue(new Particle(self.myTurtle, self.partSize, self.color));
                 self.myTurtle.forward(2);
             }
         },
 
         testIntersect: function (self, shape) {
-            let position = self.myTurtle.position;
             let distX = self.partSize + shape.w + 1;
             let distY = self.partSize + shape.h + 1;
             return (this.tail.find((part) => { // Collision test!
@@ -170,6 +169,8 @@ function GameDraw(turtle) {
                 shape.food = false;
                 console.log("Eaten food.");
                 this.size += 10;
+                // In 10 seconds: check for mission complete!
+                setTimeout(this.checkComplete, 10000, this);
             }
         },
 
@@ -179,10 +180,23 @@ function GameDraw(turtle) {
             while (self.tail.length > 0) {
                 self.tail.dequeue();
             }
-            self.myTurtle.canvas.getContext('2d').fillText("Game Over", 10, 10);
+            context.fillStyle = "OrangeRed";
+            context.fillText("Game Over", 10, 10);
             paused = true;
+        },
+
+        checkComplete: (self) => {
+            if (self.alive) {
+                for (let part of food) {
+                    if (part.food) return false; // Food is left uncaught
+                }
+                // All food is collected and still alive: mission complete!
+                context.fillStyle = "DarkTurquoise";
+                context.fillText("Mission Complete!", 10, 10);
+                paused = true;
+            }
         }
-    }
+    };
     snake.init(snake);
 
     function Particle(lt, particleTrailWidth, strokeColor) {
@@ -252,10 +266,10 @@ function GameDraw(turtle) {
         }
         // do something
         console.log("key: ", e.key);
-        if (e.key == 'p') {
+        if (e.key === 'p') {
             paused = !paused;
         }
-        if (e.key == 'n' && !snake.alive) {
+        if (e.key === 'n' && !snake.alive) {
             paused = false;
             snake.alive = true;
             snake.size = 10;
@@ -263,7 +277,7 @@ function GameDraw(turtle) {
         }
     });
 
-    paused = false;
+    let paused = false;
 
     function collisionTest(activeShape, allShapes) {
         if (paused) return;
