@@ -5,7 +5,7 @@ and drawing with "a pen". Adds some gameplay dynamics, event listeners, effects 
 
 ## Preview:
 
-![Snake game demo](./snake-demo.png
+![Snake game demo](./snake-demo.png)
 
 ## Installation:
 Just clone this repository locally and open the index.html file in your favorite browser. Enjoy! :)
