@@ -7,7 +7,7 @@ and drawing with "a pen". Adds some gameplay dynamics, event listeners, effects 
 
 * https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial
 * https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript
-*
+* https://github.com/toolness/tiny-turtle
 
 ## Resources:
 
