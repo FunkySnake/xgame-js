@@ -8,7 +8,7 @@ and drawing with "a pen". Adds some gameplay dynamics, mouse & key interaction, 
 ![Snake game demo](./snake-demo.png)
 
 ## Installation:
-Just clone this repository locally or download [version init-0.0.1](https://github.com/FunkySnake/xgame-js/archive/refs/tags/init-0.0.1.zip)
+Just clone this repository locally or download [version 0.0.2](https://github.com/FunkySnake/xgame-js/archive/refs/tags/version-0.0.2.zip)
 and open the `src/index.html` file in your favorite browser. Enjoy! :)
 
 ## Credits:
