@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <title>My Tiny Game</title>
     <script src="./game/tiny-turtle.js"></script>
-    <script src="./game/drawing.js"></script>
+    <script src="./game/snake.js"></script>
+    <script src="./game/module.js"></script>
+    <script src="./game/gameplay.js"></script>
+    <script src="./game/engine.js"></script>
+    <script src="./game/shapes.js"></script>
+    <script src="./game/interaction.js"></script>
     <link rel="stylesheet" href="./css/snake-style.css">
 </head>
 <body>
@@ -29,7 +34,7 @@ Let's Play!
 <div>
     <canvas id="space" width="300" height="300"></canvas>
     <script>
-        GameDraw(new TinyTurtle()).start();
+        GameOfSnake(document.getElementById('space')).start();
     </script>
 </div>
 </body>

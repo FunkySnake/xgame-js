@@ -3,12 +3,12 @@
 // Public Domain.
 // For more information, see http://github.com/toolness/tiny-turtle.
 
-function TinyTurtle(canvas) {
+function TinyTurtle(canvas, turtle) {
     canvas = canvas || document.querySelector('canvas');
 
     var self = this;
-    var rotation = 90;
-    var position = {
+    var rotation = turtle?.rotation || 90;
+    var position = turtle?.position || {
         // See http://diveintohtml5.info/canvas.html#pixel-madness for
         // details on why we're offsetting by 0.5.
         x: canvas.width / 2 + 0.5,
@@ -75,20 +75,38 @@ function TinyTurtle(canvas) {
         return self;
     };
 
-    self.jumpTo = function (turtle) {
-        position = turtle.position;
-        rotation = turtle.rotation;
+    self.clone = function (turtle) {
+        this.canvas = turtle.canvas;
+        this.position = turtle.position;
+        this.rotation = turtle.rotation;
     }
 
-    self.circle = function (r) {
+    self.circle = function (radius) {
         let ctx = canvas.getContext('2d');
         ctx.beginPath();
-        ctx.arc(position.x, position.y, r, 0, Math.PI * 2);
+        ctx.arc(position.x, position.y, radius, 0, Math.PI * 2);
         ctx.strokeStyle = ctx.fillStyle = self.penStyle;
         isPenDown ? ctx.fill() : ctx.stroke();
         ctx.closePath();
         ctx.restore()
         return self;
+    }
+
+    self.rect = function (width, height) {
+        this.forward(width).right(90).forward(height).right(90).forward(width).right(90).forward(height).right(90);
+        return self;
+    };
+
+    self.fillAll = function () {
+        let ctx = canvas.getContext('2d');
+        ctx.strokeStyle = ctx.fillStyle = self.penStyle;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    self.text = function (text, x, y) {
+        let ctx = canvas.getContext('2d');
+        ctx.strokeStyle = ctx.fillStyle = self.penStyle;
+        ctx.fillText(text, x, y);
     }
 
     Object.defineProperties(self, {
