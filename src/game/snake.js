@@ -100,15 +100,22 @@ function GameOfSnake(canvas) {
     const self = this;
     const mainTurtle = new TinyTurtle(canvas);
     const settings = {
-        spaceBgColor: "rgb(0 0 0 / 5%)", // Black 5%
-        starOutline: "rgb(148 0 211 / 20%)", // DarkViolet 20%
+        // Black 5% - this makes the glowing effect on the tail of moving objects. It does so by gradually overlaying them with 5% (alpha) on each redraw cycle.
+        spaceBgColor: "rgb(0 0 0 / 5%)",
+        // DarkViolet 20% - effect as above.
+        starOutline: "rgb(148 0 211 / 20%)",
         starCenter: "Black",
         ballColor: "Salmon",
         snakeColor: "WhiteSmoke",
-        gameOverTextColor: "OrangeRed",
-        gameOverText: "Game Over!",
-        completeTextColor: "DarkTurquoise",
-        completeText: "Mission Complete!",
+        // Use sub-structures as in here, to group values as your wish:
+        gameOver: {
+            textColor: "OrangeRed",
+            text: "Game Over!",
+        },
+        complete: {
+            textColor: "DarkTurquoise",
+            text: "Mission Complete!",
+        },
         food: {
             color: "Aquamarine",
             size: 5,
@@ -131,15 +138,16 @@ function GameOfSnake(canvas) {
     // Non playing objects - entities, that interact with the player in the game
     game.npcs = [ball].concat(food);
 
-    //---- Add Interaction
+    //---- Add User Interaction
     let interaction = new Interaction(canvas);
     snake.followUp(interaction.cursor);
     interaction.addKeyHandler('p', () => game.switchPause());
     interaction.addKeyHandler('n', () => game.restart());
 
-    //-- start up the game engine loop
+    //-- Start up the game engine loop
     self.start = function () {
         console.log("Started...");
+        // Module injection basic example:
         hello.name = "Snake";
         console.log(hello.greet());
 

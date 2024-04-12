@@ -17,6 +17,7 @@ function spread(shapes, distance = getRandomInt(50)) {
 class Level {
     objects = [];
 
+    // => Example constructor injection of "context" - other objects from outside, such as turtle and settings:
     constructor(turtle, settings) {
         this.myTurtle = turtle;
         this.settings = settings;
@@ -43,14 +44,15 @@ class Level {
     }
 
     gameOver() {
-        this.myTurtle.penStyle = this.settings.gameOverTextColor;
-        this.myTurtle.text(this.settings.gameOverText, 10, 10);
+        this.myTurtle.penStyle = this.settings.gameOver.textColor;
+        console.log(this.settings.gameOver.text);
+        this.myTurtle.text(this.settings.gameOver.text, 10, 10);
     }
 
     complete() {
-        this.myTurtle.penStyle = this.settings.completeTextColor;
-        console.log(this.settings.completeText);
-        this.myTurtle.text(this.settings.completeText, 10, 10);
+        this.myTurtle.penStyle = this.settings.complete.textColor;
+        console.log(this.settings.complete.text);
+        this.myTurtle.text(this.settings.complete.text, 10, 10);
     }
 }
 
@@ -112,6 +114,8 @@ function GamePlay(player, level) {
     self.restart = function () {
         self.isPaused = false;
         player.reset();
+        // Reload the food objects. Example of filter: (non-deadly ones).
+        // NB! Reusing objects
         self.npcs.forEach(p => {
             if (!p.isDeadly) p.isFood = true
         });
