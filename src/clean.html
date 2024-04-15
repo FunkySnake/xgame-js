@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Tiny Game</title>
+    <script src="./game/tiny-turtle.js"></script>
+    <script src="./game/module.js"></script>
+
+    <link rel="stylesheet" href="./css/snake-style.css">
+</head>
+<body>
+<h1 id="title">Hello, ___!</h1>
+<p>
+    This is a clean canvas to draw and experiment with. Happy coding!
+</p>
+
+<div>
+    <canvas id="stage" width="300" height="300"></canvas>
+    <script>
+        const settings = {
+            stage: {
+                bgImage: './img/space-2.jpg',
+                width: 300,
+                height: 300
+            }
+        };
+        const player = {
+            name: "Player"
+        }
+
+        function CleanStage(canvas) {
+            const turtle = new TinyTurtle(canvas);
+            const bgImage = new Image(settings.stage.width, settings.stage.height); // Using optional size for image
+            bgImage.onload = function () {
+                console.log("bg image loaded")
+                turtle.image(bgImage);
+            }; // Draw when image has loaded
+
+            // Load an image
+            bgImage.src = settings.stage.bgImage;
+        }
+
+        window.onload = () => {
+            new CleanStage(document.getElementById('stage'));
+            // Module injection basic example:
+            hello.name = player.name;
+            console.log(hello.greet());
+            document.getElementById("title").textContent = hello.greet();
+        }
+    </script>
+</div>
+</body>
+</html>
