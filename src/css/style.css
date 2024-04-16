@@ -1,0 +1,17 @@
+body {
+    background-color: white;
+    color: black;
+    font-family: "Roboto Light", serif;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+li {
+    margin-left: 40px;
+}
+
+a {
+    color: blue;
+}
