@@ -109,6 +109,11 @@ function TinyTurtle(canvas, turtle) {
         ctx.fillText(text, x, y);
     }
 
+    self.image = function (img, x = 0, y = 0, w = canvas.width, h = canvas.height) {
+        let ctx = canvas.getContext('2d');
+        ctx.drawImage(img, x, y, w, h);
+    }
+
     Object.defineProperties(self, {
         canvas: {
             get: function () {

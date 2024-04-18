@@ -1,9 +1,9 @@
 // Just a basic demo module
 const hello = (function () {
-    var module = {};
+    const module = {};
     module.name = "World";
     module.greet = function () {
-        return "Hello " + this.name + "!";
+        return "Hello, " + this.name + "!";
     }
     return module;
 }());
