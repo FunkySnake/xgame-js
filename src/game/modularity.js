@@ -1,3 +1,6 @@
+// A polyfill for browser enable the usage of:
+// module.exports = {...};
+// require('module');
 "use strict"
 
 require.$$modules = {}
