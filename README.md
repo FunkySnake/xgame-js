@@ -10,7 +10,7 @@ and drawing with "a pen". Adds some gameplay dynamics, mouse & key interaction, 
 
 ## Installation:
 
-Just clone this repository locally or
+Just clone [this repository](https://github.com/FunkySnake/xgame-js) locally or
 download [version 0.0.3](https://github.com/FunkySnake/xgame-js/archive/refs/tags/module-0.0.3.zip)
 and open the [`src/index.html`](./src/index.html) file in your favorite browser. Enjoy! :)
 
