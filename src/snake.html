@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>My Tiny Game</title>
+    <link rel="icon" type="image/x-icon" href="./img/turtle.png">
+    <script src="./game/modularity.js"></script>
     <script src="./game/tiny-turtle.js"></script>
     <script src="./game/snake.js"></script>
     <script src="./game/module.js"></script>
@@ -34,7 +36,7 @@ Let's Play!
 <div>
     <canvas id="space" width="300" height="300"></canvas>
     <script>
-        GameOfSnake(document.getElementById('space')).start();
+        new GameOfSnake(document.getElementById('space')).start();
     </script>
 </div>
 </body>

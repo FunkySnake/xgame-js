@@ -7,3 +7,5 @@ const hello = (function () {
     }
     return module;
 }());
+
+module.exports = hello;

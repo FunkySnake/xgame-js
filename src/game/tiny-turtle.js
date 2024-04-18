@@ -139,3 +139,5 @@ function TinyTurtle(canvas, turtle) {
 
     return self;
 }
+
+module.exports = TinyTurtle;
